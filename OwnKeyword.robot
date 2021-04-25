@@ -5,13 +5,26 @@ Test Setup    open browser    ${appURL}    ${browser}
 Test Teardown    close browser
 
 *** Variables ***
+#SCALAR VARIABLES
 ${appURL}    https://opensource-demo.orangehrmlive.com/
 ${browser}    chrome
+
+#LIST VARIABLES
+@{credentials}    Admin    admin123
+
+#DICTIONARY VARIABLES
+#&{DICTIONARY}     string=cat    int=${1}    list=@{LIST}
+#Usage
+#${DICTIONARY}    # {'string': 'cat', 'int': 1, 'list': ['one', 'two', 'three']}
+#${DICTIONARY}[string]    # cat
+#${DICTIONARY.int}    # 1
+#${DICTIONARY}[list][0]    # one
 
 *** Test Cases ***
 Login General
     [Documentation]    Login to OpenHRMLive
     [Tags]    Smoke
+    log to console    ${credentials}[1]
     Maximize Window
     Enter Username
     Enter Password
@@ -24,9 +37,9 @@ Login General
 Maximize Window
     maximize browser window
 Enter Username
-    input text    id=txtUsername    Admin
+    input text    id=txtUsername    ${credentials}[0]
 Enter Password
-    input password    id=txtPassword    admin123
+    input password    id=txtPassword    ${credentials}[1]
 Click On Login Button
     click button    id=btnLogin
 Verify Dashboard For User
