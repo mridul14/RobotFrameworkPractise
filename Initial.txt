@@ -1,0 +1,30 @@
+1) Install Python
+2) Install robotframework: pip install robotframework
+3) Install selenium for robot framework: pip install robotframework-seleniumlibrary
+4) To work with API install: pip install robotframework-requests
+5) Download webdrivers for browsers
+6) Set python path correctly in system varialbles
+-> Create new System Variable named 'PYTHONPATH', example for values: C:\Users\dell\python38;C:\Users\dell\python38\DLLs;C:\Users\dell\python38\Scripts;C:\Users\dell\python38\Lib;C:\Users\dell\python38\libs
+-> Now add this system variable in 'path' system variable. Add a new value in 'path' variable as %PYTHONPATH%
+7) Add driver location in enviroment variable. Add the directory location in 'path' system variable.
+8) To work with robotframework in PyCharm IDE, add the 'IntelliBot' Plugin in PyCharm.
+-> Go to https://github.com/lte2000/intellibot
+-> Click on intellibot.jar file and download it
+-> coy the diectory path to where it is downloaded
+-> go to pycharm->Files->Settings->Plugins->Click on Settings Icon ->Select 'Install Plugins from disk' option-> Specify the download directory and select the intellibot.jar file->Restart IDE
+
+
+-----------------------------
+1) Created a New Project amazonRobot
+2) Created 3 directories in it : Tests, Resources, Results
+3) Inside Tests Created a script by name Amazon.robot
+4) Run this script from the Terminal inside PyCharm[View-> Tool Windows -> Terminal]
+5) To run give command robot <filenmane.robot>. So in our case command will be robot tests/Amazon.robot
+6) By default the results of executing a file will be saved in the 'amazonRobot' directory directly, but we want the results to be saved in "Results" directory.
+    So to save the result in some specific place the command will look like: robot -d some/path <filename.robot>
+    So in our case the command will be: robot -d results Amazom.robot
+
+----------------------------
+To run tests parallely install pabot: pip install robotframework-pabot
+usage: pabot [path to tests]
+eg: pabot --processes 2 -d results *.robot
